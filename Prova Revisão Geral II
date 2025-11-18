@@ -1,0 +1,8 @@
+import os
+
+caminho_atual = os.getcwd()
+conteudo = os.listdir(caminho_atual)
+
+print(f"Diretório: {caminho_atual}")
+for item in conteudo:
+    print(item)
