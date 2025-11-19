@@ -1,0 +1,22 @@
+import flet as ft
+
+def main(page: ft.Page):
+    page.title = "Cyber Tasks"
+    page.bgcolor = "black"
+    
+    def add_task(e):
+        if task_input.value:
+            tasks.controls.append(ft.Text(f"• {task_input.value}", color="#00ff9d"))
+            task_input.value = ""
+            page.update()
+    
+    task_input = ft.TextField(label="Nova tarefa", expand=True, color="#00ff9d", border_color="#00ff9d")
+    add_button = ft.ElevatedButton("Add", on_click=add_task, bgcolor="#00ff9d", color="black")
+    tasks = ft.Column()
+    
+    page.add(
+        ft.Row([task_input, add_button]),
+        tasks
+    )
+
+ft.app(target=main)
