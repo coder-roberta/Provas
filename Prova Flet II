@@ -1,0 +1,20 @@
+import flet as ft
+
+def main(page: ft.Page):
+    page.title = "Formulario de Contato"
+    page.bgcolor = "#0a0a12"
+    
+    def submit(e):
+        if all([name.value, email.value, message.value]):
+            result.value = "Mensagem transmitida"
+            page.update()
+    
+    name = ft.TextField(label="Nome", border_color="#00ff9d", color="#ffffff")
+    email = ft.TextField(label="Email", border_color="#00ff9d", color="#ffffff")
+    message = ft.TextField(label="Mensagem", multiline=True, border_color="#00ff9d", color="#ffffff")
+    submit_btn = ft.ElevatedButton("Transmitir", on_click=submit, bgcolor="#00ff9d", color="#0a0a12")
+    result = ft.Text(color="#00ff9d")
+    
+    page.add(name, email, message, submit_btn, result)
+
+ft.app(target=main)
