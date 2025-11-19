@@ -1,0 +1,43 @@
+class ContaBancaria:
+    def __init__(self, titular):
+        self._saldo = 0
+        self._titular = titular
+    
+    def depositar(self, valor):
+        if valor > 0:
+            self._saldo += valor
+            return True
+        return False
+    
+    def sacar(self, valor):
+        if valor > 0 and valor <= self._saldo:
+            self._saldo -= valor
+            return True
+        return False
+    
+    def exibir_saldo(self):
+        return self._saldo
+
+titular = input("Digite o nome do titular: ")
+conta = ContaBancaria(titular)
+
+while True:
+    try:
+        deposito = float(input("Digite o valor para depósito: "))
+        if conta.depositar(deposito):
+            break
+        print("Valor inválido! Digite um valor positivo.")
+    except:
+        print("Valor inválido! Digite um número.")
+
+while True:
+    try:
+        saque = float(input("Digite o valor para saque: "))
+        if conta.sacar(saque):
+            print("Saque realizado com sucesso!")
+            break
+        print("Saldo insuficiente ou valor inválido!")
+    except:
+        print("Valor inválido! Digite um número.")
+
+print(f"Saldo final: R$ {conta.exibir_saldo():.2f}")
